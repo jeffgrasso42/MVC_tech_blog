@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
     });
     // res.json(postData);
     const posts = postData.map(post => post.get({ plain: true }));
-    res.render('homepage', { posts, logged_in: req.session.logged_in });
+    res.render('homepage', { posts, loggedIn: req.session.loggedIn });
   } catch (err) {
     res.json(err);
   }
@@ -23,7 +23,7 @@ router.get('/posts/:id', withAuth, async (req, res) => {
     });
     // res.json(postData);
     const post = postData.get({ plain: true });
-    res.render('post', { post, logged_in: req.session.logged_in });
+    res.render('post', { post, loggedIn: req.session.loggedIn });
   } catch (err) {
     res.json(err);
   }
@@ -32,7 +32,7 @@ router.get('/posts/:id', withAuth, async (req, res) => {
 // Login route
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect to the homepage
-  if (req.session.logged_in) {
+  if (req.session.loggedIn) {
     res.redirect('/');
     return;
   }
