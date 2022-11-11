@@ -25,6 +25,7 @@ router.post('/login', async (req, res) => {
       req.session.userId = dbUserData.id;
       req.session.loggedIn = true;
       res.status(200).json({ user: dbUserData, message: 'You are now logged in!' });
+      console.log('🚀 ~ file: user-routes.js ~ line 57 ~ req.session.save ~ req.session.cookie', req.session.cookie);
     });
   } catch (err) {}
 });
